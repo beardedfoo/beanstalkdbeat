@@ -1,0 +1,371 @@
+- key: common
+  title: Common
+  description: >
+    Contains common fields available in all event types.
+  fields:
+
+    - name: metricset.module
+      description: >
+        The name of the module that generated the event.
+
+    - name: metricset.name
+      description: >
+        The name of the metricset that generated the event.
+
+    - name: metricset.host
+      description: >
+        Hostname of the machine from which the metricset was collected. This
+        field may not be present when the data was collected locally.
+
+    - name: metricset.rtt
+      type: long
+      required: true
+      description: >
+        Event round trip time in microseconds.
+
+    - name: metricset.namespace
+      type: keyword
+      description: >
+        Namespace of dynamic metricsets.
+
+    - name: type
+      required: true
+      example: metricsets
+      description: >
+        The document type. Always set to "doc".
+
+- key: beanstalkd
+  title: "BeanstalkD"
+  description: >
+    beanstalkd module
+  short_config: false
+  release: beta
+  fields:
+    - name: beanstalkd
+      type: group
+      description: >
+      fields:
+        - name: info
+          type: group
+          description: >
+            Statistics across the whole beanstalkd instance
+          fields:
+            - name: binlog-current-index
+              type: long
+              description: >
+                Is the index of the current binlog file being written to. If binlog is not active this value will be 0
+
+            - name: binlog-max-size
+              type: long
+              formate: bytes
+              description: >
+                Is the maximum size in bytes a binlog file is allowed to get before a new binlog file is opened
+
+            - name: binlog-oldest-index
+              type: long
+              description: >
+                Is the index of the oldest binlog file needed to store the current jobs
+
+            - name: binlog-records-migrated
+              type: long
+              description: >
+                Is the cumulative number of records written as part of compaction
+
+            - name: binlog-records-written
+              type: long
+              description: >
+                Is the cumulative number of records written to the binlog.
+
+            - name: cmd-bury
+              type: long
+              description: >
+                Is the cumulative number of bury commands.
+
+            - name: cmd-delete
+              type: long
+              description: >
+                Is the cumulative number of delete commands.
+
+            - name: cmd-ignore
+              type: long
+              description: >
+                Is the cumulative number of ignore commands.
+
+            - name: cmd-kick
+              type: long
+              description: >
+                Is the cumulative number of kick commands.
+
+            - name: cmd-list-tube-used
+              type: long
+              description: >
+                Is the cumulative number of list-tube-used commands.
+
+            - name: cmd-list-tubes
+              type: long
+              description: >
+                Is the cumulative number of list-tubes commands.
+
+            - name: cmd-list-tubes-watched
+              type: long
+              description: >
+                Is the cumulative number of list-tubes-watched commands.
+
+            - name: cmd-pause-tube
+              type: long
+              description: >
+                Is the cumulative number of pause-tube commands.
+
+            - name: cmd-peek
+              type: long
+              description: >
+                Is the cumulative number of peek commands.
+
+            - name: cmd-peek-buried
+              type: long
+              description: >
+                Is the cumulative number of peek-buried   commands.
+
+            - name: cmd-peek-delayed
+              type: long
+              description: >
+                Is the cumulative number of peek-delayed commands.
+
+            - name: cmd-peek-ready
+              type: long
+              description: >
+                Is the cumulative number of peek-ready commands.
+
+            - name: cmd-put
+              type: long
+              description: >
+                Is the cumulative number of put commands.
+
+            - name: cmd-release
+              type: long
+              description: >
+                Is the cumulative number of release commands.
+
+            - name: cmd-reserve
+              type: long
+              description: >
+                Is the cumulative number of reserve commands.
+
+            - name: cmd-reserve-with-timeout
+              type: long
+              description: >
+                Is the cumulative number of reserve-with-timeout commands.
+
+            - name: cmd-stats
+              type: long
+              description: >
+                Is the cumulative number of stats commands.
+
+            - name: cmd-stats-job
+              type: long
+              description: >
+                Is the cumulative number of stats-job commands.
+
+            - name: cmd-stats-tube
+              type: long
+              description: >
+                Is the cumulative number of stats-tube commands.
+
+            - name: cmd-touch
+              type: long
+              description: >
+                Is the cumulative number of touch commands.
+
+            - name: cmd-use
+              type: long
+              description: >
+                Is the cumulative number of use commands.
+
+            - name: cmd-watch
+              type: long
+              description: >
+                Is the cumulative number of watch commands.
+
+            - name: current-connections
+              type: long
+              description: >
+                Is the number of currently open connections.
+
+            - name: current-jobs-buried
+              type: long
+              description: >
+                Is the number of currently burried jobs connections.
+
+            - name: current-jobs-delayed
+              type: long
+              description: >
+                Is the number of currently delayed jobs connections.
+
+            - name: current-jobs-ready
+              type: long
+              description: >
+                Is the number of currently ready jobs connections.
+
+            - name: current-jobs-reserved
+              type: long
+              description: >
+                Is the number of currently reserved jobs connections.
+
+            - name: current-jobs-urgent
+              type: long
+              description: >
+                Is the number of currently urgent jobs connections.
+
+            - name: current-producers
+              type: long
+              description: >
+                Is the number of open connections that have each issued at least one put command.
+
+            - name: current-tubes
+              type: long
+              description: >
+                Is the number of currently-existing tubes.
+
+            - name: current-waiting
+              type: long
+              description: >
+                Is the number of open connections that have issued a reserve command but not yet received a response.
+
+            - name: current-workers
+              type: long
+              description: >
+                Is the number of open connections that have each issued at least one reserve command.
+
+            - name: job-timeouts
+              type: long
+              description: >
+                Is the cumulative count of times a job has timed out.
+
+            - name: max-job-size
+              type: long
+              formate: bytes
+              description: >
+                Is the maximum number of bytes in a job.
+
+            - name: pid
+              type: long
+              description: >
+                Is the process id of the server.
+
+            - name: total-jobs
+              type: long
+              description: >
+                Is the cumulative count of jobs created in this tube in the current beanstalkd process.
+
+            - name: total-connections
+              type: long
+              description: >
+                Is the cumulative count of connections.
+
+            - name: uptime
+              type: long
+              description: >
+                Is the number of seconds since this server process started running.
+
+            - name: hostname
+              type: keyword
+              description: >
+                The hostname of the machine as determined by uname.
+
+            - name: id
+              type: keyword
+              description: >
+                Is a random id string for this server process, generated when each beanstalkd process starts.
+
+            - name: version
+              type: keyword
+              description: >
+                Is the version string of the server.
+
+            - name: rusage-stime
+              type: scaled_float
+              description: >
+                Is the cumulative system CPU time of this process in seconds and microseconds.
+
+            - name: rusage-utime
+              type: scaled_float
+              description: >
+                Is the cumulative user CPU time of this process in seconds and microseconds.
+
+        - name: tube
+          type: group
+          description: >
+            Shows the details stats about a specific tube
+          fields:
+            - name: name
+              type: keyword
+              description: >
+                Is the tube's name.
+
+            - name: current-jobs-buried
+              type: long
+              description: >
+                Is the number of buried jobs in this tube.
+
+            - name: current-jobs-delayed
+              type: long
+              description: >
+                Is the number of delayed jobs in this tube.
+
+            - name: current-jobs-ready
+              type: long
+              description: >
+                Is the number of jobs in the ready queue in this tube.
+
+            - name: current-jobs-reserved
+              type: long
+              description: >
+                Is the number of jobs reserved by all clients in this tube.
+
+            - name: current-jobs-urgent
+              type: long
+              description: >
+                Is the number of ready jobs with priority < 1024 in this tube.
+
+            - name: total-jobs
+              type: long
+              description: >
+                Is the cumulative count of jobs created in this tube in the current beanstalkd process.
+
+            - name: cmd-delete
+              type: long
+              description: >
+                Is the cumulative number of delete commands for this tube.
+
+            - name: cmd-pause-tube
+              type: long
+              description: >
+                Is the cumulative number of pause-tube commands for this tube.
+
+            - name: pause
+              type: long
+              description: >
+                Is the number of seconds the tube has been paused for.
+
+            - name: pause-time-left
+              type: long
+              description: >
+                Is the number of seconds until the tube is un-paused.
+
+            - name: current-using
+              type: long
+              description: >
+                Is the number of open connections that are currently using this tube.
+
+            - name: current-watching
+              type: long
+              description: >
+                Is the number of open connections that are currently watching this tube.
+
+            - name: current-waiting
+              type: long
+              description: >
+                Is the number of open connections that have issued a reserve command while watching this tube but not yet received a response..
+
+
+

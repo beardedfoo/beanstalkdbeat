@@ -1,0 +1,45 @@
+////
+This file is generated! See scripts/docs_collector.py
+////
+
+[[metricbeat-module-beanstalkd]]
+== BeanstalkD module
+
+beta[]
+
+== beanstalkd module
+
+This is the beanstalkd module.
+
+
+
+[float]
+=== Example configuration
+
+The BeanstalkD module supports the standard configuration options that are described
+in <<configuration-metricbeat>>. Here is an example configuration:
+
+[source,yaml]
+----
+beanstalkdbeat.modules:
+- module: beanstalkd
+  metricsets: ["info", "tube"]
+  enabled: true
+  period: 10s
+  hosts: ["localhost:11300"]
+
+----
+
+[float]
+=== Metricsets
+
+The following metricsets are available:
+
+* <<metricbeat-metricset-beanstalkd-info,info>>
+
+* <<metricbeat-metricset-beanstalkd-tube,tube>>
+
+include::beanstalkd/info.asciidoc[]
+
+include::beanstalkd/tube.asciidoc[]
+

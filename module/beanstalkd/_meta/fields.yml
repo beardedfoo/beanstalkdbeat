@@ -1,0 +1,11 @@
+- key: beanstalkd
+  title: "BeanstalkD"
+  description: >
+    beanstalkd module
+  short_config: false
+  release: beta
+  fields:
+    - name: beanstalkd
+      type: group
+      description: >
+      fields:

@@ -1,0 +1,15 @@
+////
+This file is generated! See scripts/docs_collector.py
+////
+
+[options="header"]
+|========================
+|Modules   |Metricsets   
+|<<metricbeat-module-beanstalkd,BeanstalkD>>  beta[]   |    
+.2+|   |<<metricbeat-metricset-beanstalkd-info,info>> experimental[]  
+|<<metricbeat-metricset-beanstalkd-tube,tube>> experimental[]  
+|================================
+
+--
+
+include::modules/beanstalkd.asciidoc[]
